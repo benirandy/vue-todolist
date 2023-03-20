@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Vue To Do List</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+            integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+
+        <div id="app">
+
+            <header class="container text-center">
+                <img id="logo" src="img/boolean-logo.png" alt="logo lost" />
+            </header>
+
+            <main class="container">
+
+                <div class="new-task text-center">
+                    <input placeholder="scrivi qualcosa" v-model="newTask" @keyup.enter="addTask" type="text" />
+                    <button @click="addTask">Aggiungi</button>
+                    <div v-show="error" class="error task-text">Errore,il testo deve contenere almeno 5 lettere</div>
+                </div>
+
+                <div class="task-list">
+                    <ul v-if="tasklist.length > 0">
+                        <li v-for="(task, index) in tasklist">
+                            <span @click="done(index)" class="task-text" :class="task.done?'done':''">
+                                {{task.text}}
+                            </span>
+                            <i @click="removeTask(index)" class="fa-sharp fa-solid fa-circle-xmark"></i>
+                        </li>
+
+                    </ul>
+
+                    <h3 v-else>Sei libero!</h3>
+
+                </div>
+
+
+
+
+            </main>
+
+
+
+
+
+        </div>
+
+
+
+
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+
+
+
+    </body>
+
+</html>
